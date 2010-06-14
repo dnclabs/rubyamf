@@ -1,30 +1,13 @@
-# Look in the tasks/setup.rb file for the various options that can be
-# configured in this Rakefile. The .rake files in the tasks directory
-# are where the options are used.
-
 begin
-  require 'bones'
-  Bones.setup
-rescue LoadError
-  begin
-    load 'tasks/setup.rb'
-  rescue LoadError
-    raise RuntimeError, '### please install the "bones" gem ###'
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "amf"
+    gemspec.summary = "amf deserializer"
+    gemspec.description = "a"
+    gemspec.email = "labs@dnc.org"
+    gemspec.homepage = "http://open.dnc.org"
+    gemspec.authors = ["DNC Labs"]
   end
+rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
 end
-
-ensure_in_path 'lib'
-require 'amf'
-
-task :default => 'spec:run'
-
-PROJ.name = 'amf'
-PROJ.authors = 'Tony Hillerson'
-PROJ.email = 'tony.hillerson@effectiveui.com'
-PROJ.url = 'FIXME (project homepage)'
-PROJ.version = AMF::VERSION
-PROJ.rubyforge.name = 'amf'
-
-PROJ.spec.opts << '--color'
-
-# EOF
